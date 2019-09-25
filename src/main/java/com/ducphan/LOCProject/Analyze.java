@@ -49,12 +49,17 @@ public class Analyze extends AnalyzeAll {
 		boolean isString  = false;
 		String quote = "\"";
 		String slash = "\\";
-		for(int i =0;i<line.length()-1;i++) {
-			if (line.charAt(i+1)=='"' && !line.substring(i, i+2).equals(slash + quote))isString = !isString;
+		for(int i =0;i<line.length();i++) {
+			if (line.charAt(i)=='"' && !line.substring(i-1, i+1).equals(slash + quote))isString = !isString;
 			if (line.substring(i, i+symbol.length()).equals(symbol) && !isString) return true;
 		}		
 		return false;
 	}
+	
+	
+		
+		
+
 	
 	public void analyze(String author) throws IOException {
 		List<String> lines = Files.readAllLines(Paths.get(file.getName()));
@@ -70,6 +75,7 @@ public class Analyze extends AnalyzeAll {
 			if (line.startsWith("---")) {
 				if (!name.equals("")) {
 					updateMap(author, name, a, d, change);
+					System.out.println(author + name + "  "+ a+ "   "+d);
 					change = 0;
 					a = 0;
 					d = 0;
