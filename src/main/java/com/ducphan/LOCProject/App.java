@@ -9,9 +9,7 @@ import java.util.Collections;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 
 public class App {
@@ -33,6 +31,6 @@ public class App {
 		}
 		Desktop.getDesktop().open(f);
 		workbook.close();
-		
+
 	}
 }
