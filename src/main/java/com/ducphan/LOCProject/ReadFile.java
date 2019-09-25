@@ -29,7 +29,8 @@ public class ReadFile {
 					String url = tokens[2];
 					String startDate = tokens[3];
 					String endDate = tokens[4];
-					Info info = new Info(id, password, url, startDate, endDate, input);
+					String author = tokens[5];
+					Info info = new Info(id, password, url, startDate, endDate, author, input);
 					infos.add(info);
 				}
 			}
