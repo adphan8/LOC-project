@@ -30,15 +30,20 @@ public class ListFileAndCalculatePercentage {
 	public void listFileAndCalculateCommentPercentage(File folder) throws FileNotFoundException {
 
 		for (File file : folder.listFiles()) {
-			names.add(file.getName());
-			if (file.getName().equals(".git")) 
+			
+			if (file.getName().equals(".git") || file.length() == 0)
 				continue;
 			if (!file.isDirectory()) {
-				if (file.getName().endsWith(".java")||  file.getName().endsWith(".c")) 
+				if (file.getName().endsWith(".c")|| file.getName().endsWith(".cs")|| file.getName().endsWith(".cpp") ||file.getName().endsWith(".java")||file.getName().endsWith(".js")) { 
 					checkJavaCS(file);
-				else if (file.getName().endsWith(".py"))
+					names.add(file.getName());
+				}
+				else if (file.getName().contains(".py")) {
 					checkPython(file);
-			} else if(file.isDirectory()){
+					names.add(file.getName());
+				}
+					
+			} else {
 				listFileAndCalculateCommentPercentage(file);
 			}
 
